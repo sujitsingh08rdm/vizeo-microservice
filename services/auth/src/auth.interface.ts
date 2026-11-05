@@ -5,6 +5,6 @@ export interface AuthModelInterface extends Document {
   fullname: string;
   mobile: string;
   password: string;
-  refreshToken?: string;
-  expiredAt?: Date;
+  refreshToken?: string | null;
+  expiredAt?: Date | null;
 }

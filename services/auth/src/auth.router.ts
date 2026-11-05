@@ -1,10 +1,19 @@
 import { Router } from "express";
-import { login, signup } from "./auth.controller";
-import { DtoMiddleware } from "./auth.middleware";
+import {
+  getSession,
+  login,
+  logout,
+  refreshToken,
+  signup,
+} from "./auth.controller";
+import { DtoMiddleware, RefreshMiddleware } from "./auth.middleware";
 import { loginDtoSchema, signupDtoSchema } from "./auth.dto";
 const AuthRouter = Router();
 
 AuthRouter.post("/signup", DtoMiddleware(signupDtoSchema), signup);
 AuthRouter.post("/login", DtoMiddleware(loginDtoSchema), login);
+AuthRouter.get("/session", getSession);
+AuthRouter.post("/refresh-token", RefreshMiddleware, refreshToken);
+AuthRouter.post("/logout", logout);
 
 export default AuthRouter;

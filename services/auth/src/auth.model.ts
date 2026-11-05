@@ -1,6 +1,4 @@
-import moment from "moment";
 import { Schema, model } from "mongoose";
-import { v4 as uuid } from "uuid";
 import bcrypt from "bcrypt";
 import { AuthModelInterface } from "./auth.interface";
 
@@ -20,9 +18,9 @@ schema.pre("save", async function () {
   if (this.isModified("password")) {
     this.password = await bcrypt.hash(this.password, 12);
   }
-  // Chnage this since its needed during signup(or user creations) will mark this as below as null for both
-  this.refreshToken = uuid();
-  this.expiredAt = moment().add(1, "M").toDate();
+
+  this.refreshToken = null;
+  this.expiredAt = null;
 });
 
 const AuthModel = model<AuthModelInterface>("Auth", schema);
