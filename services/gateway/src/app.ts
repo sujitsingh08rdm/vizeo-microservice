@@ -26,3 +26,9 @@ app.use(
 // app.use("/", (req: Request, res: Response) => {
 //   res.json({ message: "Gateway Server" });
 // });
+
+
+app.use("/video",createProxyMiddleware({
+	target: "http://localhost:4003/video",
+	changeOrigin: true
+}))

@@ -25,8 +25,8 @@ export const RefreshMiddleware = async (
   next: NextFunction,
 ) => {
   try {
-    console.log("IN refresh middleware");
     const refreshToken = req.cookies.refreshToken;
+    console.log("in fresh middlewre 1");
     if (!refreshToken) {
       res
         .status(401)
@@ -34,6 +34,7 @@ export const RefreshMiddleware = async (
       return;
     }
     const user = await AuthModel.findOne({ refreshToken });
+    console.log("in fresh middlewre 2");
 
     if (!user) {
       res
@@ -41,7 +42,7 @@ export const RefreshMiddleware = async (
         .json({ message: "failed to refresh token no fresh token" });
       return;
     }
-
+    console.log("in fresh middlewre 3");
     const today = moment();
     const expiry = moment(user.expiredAt);
 
@@ -64,6 +65,31 @@ export const RefreshMiddleware = async (
   } catch (error) {
     if (error instanceof Error) {
       res.status(500).json({ message: error.message });
+    }
+  }
+};
+
+export const IscMiddleware = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const apiKey = req.headers["x-api-key"];
+    console.log(apiKey);
+
+    if (!apiKey) {
+      throw new Error("Un-authorized");
+    }
+
+    if (apiKey !== process.env.API_KEY) {
+      throw new Error("Un-authorized");
+    }
+
+    next();
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(401).json({ message: "Un-authorized" });
     }
   }
 };

@@ -98,3 +98,16 @@ export const logout = async (_req: Request, res: Response) => {
     }
   }
 };
+
+export const verifyToken = async (req: Request, res: Response) => {
+  try {
+    const auth = authService.verifyToken(req.body);
+    if (!auth) {
+      throw new Error("Token Verification failed");
+    }
+    res.json(auth);
+  } catch (error) {
+    if (error instanceof Error)
+      res.status(500).json({ message: error.message });
+  }
+};

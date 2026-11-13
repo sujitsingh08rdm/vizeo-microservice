@@ -24,5 +24,12 @@ export const loginDtoSchema = z
   })
   .strict();
 
+export const verifyTokenDtoSchema = z
+  .object({
+    token: z.string().min(1, "token required"),
+  })
+  .strict();
+
 export type signupDto = z.infer<typeof signupDtoSchema>;
 export type loginDto = z.infer<typeof loginDtoSchema>;
+export type verifyTokenDto = z.infer<typeof verifyTokenDtoSchema>;

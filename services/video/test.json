@@ -1,0 +1,45 @@
+{
+  "timestamp": 1794566812604,
+  "accountId": "879330512180",
+  "queue": "arn:aws:mediaconvert:ap-southeast-1:879330512180:queues/Default",
+  "jobId": "1794566750175-dspc44",
+  "status": "COMPLETE",
+  "userMetadata": {
+    "user_id": "6ae8caac81c2db71d0bd1447",
+    "video_id": "6af6ea5abc6650bf316f364c"
+  },
+  "outputGroupDetails": [
+    {
+      "outputDetails": [
+        {
+          "outputFilePaths": [
+            "s3://vizeo-service/streams/6ae8caac81c2db71d0bd1447/zugulokw/zugulokw540.m3u8"
+          ],
+          "durationInMs": 140707,
+          "videoDetails": {
+            "widthInPx": 960,
+            "heightInPx": 540,
+            "averageBitrate": 3496242
+          }
+        },
+        {
+          "outputFilePaths": [
+            "s3://vizeo-service/streams/6ae8caac81c2db71d0bd1447/zugulokw/zugulokw720.m3u8"
+          ],
+          "durationInMs": 140707,
+          "videoDetails": {
+            "widthInPx": 1280,
+            "heightInPx": 720,
+            "averageBitrate": 4994678
+          }
+        }
+      ],
+      "playlistFilePaths": [
+        "s3://vizeo-service/streams/6ae8caac81c2db71d0bd1447/zugulokw/zugulokw.m3u8"
+      ],
+      "type": "HLS_GROUP"
+    }
+  ],
+  "paddingInserted": 0,
+  "blackVideoDetected": 0
+}

@@ -1,7 +1,6 @@
 import bcrypt from "bcrypt";
-import { loginDto, signupDto } from "./auth.dto";
+import { loginDto, signupDto, verifyTokenDto } from "./auth.dto";
 import AuthModel from "./auth.model";
-import { AuthModelInterface } from "./auth.interface";
 import jwt from "jsonwebtoken";
 import { v4 as uuid } from "uuid";
 import moment from "moment";
@@ -85,4 +84,9 @@ export const refreshToken = async (body: SessionPayloadInterface) => {
     accessToken,
     refreshToken,
   };
+};
+
+export const verifyToken = (body: verifyTokenDto) => {
+  const payload = jwt.verify(body.token, process.env.AUTH_SECRET!);
+  return payload;
 };
