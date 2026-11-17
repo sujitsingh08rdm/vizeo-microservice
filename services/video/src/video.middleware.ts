@@ -53,6 +53,8 @@ export const webhookGuardMiddleware = async (
   next: NextFunction,
 ) => {
   try {
+    console.log("WEBHOOK GUARD REACHED");
+
     const lambdaSignature = req.headers["x-api-signature"];
     const payload = JSON.stringify(req.body);
 
