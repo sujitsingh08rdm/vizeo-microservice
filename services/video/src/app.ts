@@ -12,6 +12,7 @@ import VideoRouter from "./video.router";
 import morgan from "morgan";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import "./video.worker";
 
 const app = express();
 

@@ -10,7 +10,8 @@ const schema = new Schema<VideoModelInterface>(
     size: { type: Number, required: true },
     duration: { type: Number, required: true },
     path: { type: String, required: true },
-    shares: { type: Number, default: 0, required: true },
+    streamPath: { type: String },
+    plays: { type: Number, default: 0, required: true },
     status: {
       type: String,
       enum: VideoStatusEnum,

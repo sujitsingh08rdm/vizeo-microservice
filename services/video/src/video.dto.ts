@@ -8,6 +8,7 @@ export const createVideoDtoSchema = z
     size: z.number().gte(0),
     duration: z.number().gte(0),
     path: z.string().optional(),
+    streamPath: z.string().optional(),
   })
   .strict();
 

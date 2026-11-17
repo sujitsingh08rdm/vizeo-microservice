@@ -3,9 +3,9 @@ import { VideoStatusEnum } from "./video.enum";
 import { Request } from "express";
 
 interface VideoThumbnailInterface {
-  high: { path: string; width: number; height: number };
-  medium: { path: string; width: number; height: number };
-  low: { path: string; width: number; height: number };
+  high?: { path: string; width: number; height: number };
+  medium?: { path: string; width: number; height: number };
+  low?: { path: string; width: number; height: number };
 }
 
 export interface VideoModelInterface extends Document {
@@ -14,11 +14,13 @@ export interface VideoModelInterface extends Document {
   description: string;
   size: number;
   duration: number;
-  shares: number;
+  plays: number;
   path: string;
   status: VideoStatusEnum;
   thumbnail: VideoThumbnailInterface;
+  streamPath: string;
 }
+
 export interface AuthRequestInterface extends Request {
   user?: {
     id: string;
